@@ -4,135 +4,295 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seven Silk - Luxury Baseball Caps</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+        
+        :root {
+            --primary: #641216;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+        
+        .navbar {
+            background: var(--white);
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            margin-top: 60px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #7a1619;
+        }
+        
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .product-section {
+            padding: 5rem 2rem;
+            background: var(--light-gray);
+        }
+        
+        .product-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .product-details h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .product-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li i {
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+        
+        .coming-soon {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+        
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-white font-sans">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="text-2xl font-bold" style="color: #641216;">SEVEN SILK</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-gray-600">Home</a>
-                    <a href="#about" class="hover:text-gray-600">About</a>
-                    <a href="#products" class="hover:text-gray-600">Products</a>
-                    <a href="#features" class="hover:text-gray-600">Features</a>
-                </div>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">SEVEN SILK</a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#product">Shop</a>
+                <a href="#coming-soon">Coming Soon</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="relative h-screen flex items-center justify-center">
-        <img src="/api/placeholder/1200/800" alt="Hero Baseball Cap" class="absolute inset-0 w-full h-full object-cover opacity-90"/>
-        <div class="relative z-10 text-center">
-            <h1 class="text-5xl font-bold mb-4 text-white">Luxury Meets Functionality</h1>
-            <p class="text-xl text-white mb-8">Silk-lined baseball caps for ultimate comfort and hair care</p>
-            <button class="bg-white text-lg px-8 py-3 rounded-full" style="color: #641216;">
-                Shop Now
-            </button>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Redefining Luxury Baseball Caps</h1>
+            <p>Experience the perfect blend of style and hair care with our silk-lined corduroy caps.</p>
+            <a href="https://www.kickstarter.com" class="btn">Shop Now on Kickstarter</a>
         </div>
-    </div>
+    </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16" style="color: #641216;">Why Choose Seven Silk?</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="text-5xl mb-4">🧢</div>
-                    <h3 class="text-xl font-semibold mb-2">Premium Materials</h3>
-                    <p class="text-gray-600">Corduroy exterior with luxurious satin silk lining</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="text-5xl mb-4">✨</div>
-                    <h3 class="text-xl font-semibold mb-2">Hair Benefits</h3>
-                    <p class="text-gray-600">Reduces friction, prevents breakage, and maintains style</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="text-5xl mb-4">🎨</div>
-                    <h3 class="text-xl font-semibold mb-2">Timeless Design</h3>
-                    <p class="text-gray-600">Classic 6-panel structure with modern aesthetics</p>
-                </div>
+    <section class="features" id="features">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Why Choose Seven Silk</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-crown"></i>
+                <h3>Premium Materials</h3>
+                <p>Luxurious corduroy exterior with satin silk lining for ultimate comfort</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-heart"></i>
+                <h3>Hair Care Benefits</h3>
+                <p>Reduces friction, prevents breakage, and maintains moisture in your hair</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-star"></i>
+                <h3>Timeless Design</h3>
+                <p>Classic 6-panel unstructured design that suits any style</p>
             </div>
         </div>
     </section>
 
-    <!-- Product Section -->
-    <section class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16" style="color: #641216;">Our Collection</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="rounded-lg overflow-hidden shadow-lg">
-                    <img src="/api/placeholder/600/400" alt="Black Cap" class="w-full"/>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Black Corduroy Cap</h3>
-                        <p class="text-gray-600 mb-4">Classic black corduroy with red silk lining</p>
-                        <p class="text-xl font-bold" style="color: #641216;">£40.00</p>
-                    </div>
-                </div>
-                <div class="rounded-lg overflow-hidden shadow-lg">
-                    <img src="/api/placeholder/600/400" alt="Coming Soon" class="w-full"/>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">More Colors Coming Soon</h3>
-                        <p class="text-gray-600 mb-4">Stay tuned for new designs</p>
-                        <p class="text-xl font-bold text-gray-400">Coming Soon</p>
-                    </div>
-                </div>
+    <section class="product-section" id="product">
+        <div class="product-content">
+            <img src="/api/placeholder/600/500" alt="Seven Silk Baseball Cap" class="product-image">
+            <div class="product-details">
+                <h2>The Classic Corduroy Cap</h2>
+                <p>Our signature baseball cap combines premium corduroy fabric with satin silk lining, designed for both style and hair care.</p>
+                <ul class="product-features">
+                    <li><i class="fas fa-check"></i>Satin silk lining for hair protection</li>
+                    <li><i class="fas fa-check"></i>Premium corduroy exterior</li>
+                    <li><i class="fas fa-check"></i>Adjustable size</li>
+                    <li><i class="fas fa-check"></i>Available in Black</li>
+                </ul>
+                <p style="font-size: 1.5rem; margin-bottom: 2rem;">£40.00</p>
+                <a href="https://www.kickstarter.com" class="btn">Back on Kickstarter</a>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-16" style="color: #641216;">Hair Care Benefits</h2>
-            <div class="grid md:grid-cols-4 gap-6">
-                <div class="p-4">
-                    <h3 class="font-semibold mb-2">Moisture Retention</h3>
-                    <p class="text-gray-600">Helps maintain natural hair moisture</p>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold mb-2">Reduced Breakage</h3>
-                    <p class="text-gray-600">Minimizes friction and damage</p>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold mb-2">Style Preservation</h3>
-                    <p class="text-gray-600">Keeps your hairstyle intact</p>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold mb-2">Curl Protection</h3>
-                    <p class="text-gray-600">Preserves natural curl pattern</p>
-                </div>
-            </div>
-        </div>
+    <section class="coming-soon" id="coming-soon">
+        <h2>New Colors Coming Soon</h2>
+        <p style="margin-top: 1rem;">Stay tuned for our expanded collection featuring more colors and styles.</p>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold mb-4">SEVEN SILK</h4>
-                    <p class="text-gray-400">Redefining headwear with style and purpose</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Contact</h4>
-                    <p class="text-gray-400">Milton Keynes, UK</p>
-                    <p class="text-gray-400">support@sevensilk.com</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
-                        <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
-                        <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-                <p>&copy; 2024 Seven Silk. All rights reserved.</p>
-            </div>
+    <footer>
+        <p>© 2024 Seven Silk. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
         </div>
     </footer>
 </body>
